@@ -26,18 +26,12 @@ namespace WebAppCoreMvc.Controllers
             return View();
         }
 
-        [Route("test")]
-        public IActionResult Test()
-        {
-            ViewData["age2"] =TempData["age"];
-            TempData.Keep();
-            return View();
-        }
+       
 
         [Route("test1")]
         public IActionResult Test1()
         {
-            ViewData["age3"] = ViewData["age2"];
+            ViewData["age3"] = TempData["age"];
             return View();
         }
 
