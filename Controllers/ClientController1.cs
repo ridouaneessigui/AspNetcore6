@@ -4,7 +4,7 @@ namespace WebAppMVCCore6.Controllers
 {
     public class ClientController1 : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index() //Action Json Content    "Iaction l interface"  "action des donnees"+result
         {
             return View();
         }

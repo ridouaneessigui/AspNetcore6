@@ -13,14 +13,52 @@ namespace WebAppCoreMvc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ViewResult Index()
         {
+            //ViewData["nom"] = "clil";
+            //ViewData["message"] = "bonjour";
+                      //ViewBag.nom = "clil";
+                     //ViewBag.message = "bonjour";
+            TempData["age"] = "test data";
+            var data = TempData["age"];
+            ViewData["age"] = data;
+            TempData.Keep();
+            return View();
+        }
+
+        [Route("test")]
+        public IActionResult Test()
+        {
+            ViewData["age2"] =TempData["age"];
+            TempData.Keep();
+            return View();
+        }
+
+        [Route("test1")]
+        public IActionResult Test1()
+        {
+            ViewData["age3"] = ViewData["age2"];
             return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [Route("welcom")]
+
+        public JsonResult Welcome()
+        {
+            bool isAdmin = false;
+            string output = isAdmin ? "Welcome to the Admin User" : "Welcome to the User";
+
+
+
+            return Json(output);
+
+
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
